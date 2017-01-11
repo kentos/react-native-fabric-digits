@@ -12,7 +12,6 @@ import com.digits.sdk.android.DigitsException;
 import com.digits.sdk.android.DigitsOAuthSigning;
 import com.digits.sdk.android.DigitsSession;
 import com.facebook.react.bridge.Callback;
-import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -28,7 +27,7 @@ import java.util.Map;
 
 import io.fabric.sdk.android.Fabric;
 
-public class DigitsManager extends ReactContextBaseJavaModule implements LifecycleEventListener, AuthCallback {
+public class DigitsManager extends ReactContextBaseJavaModule implements AuthCallback {
 
     private static final String META_DATA_KEY = "io.Digits.ApiKey";
     private static final String META_DATA_SECRET = "io.Digits.ApiSecret";
