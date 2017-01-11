@@ -56,7 +56,6 @@ public class DigitsManager extends ReactContextBaseJavaModule implements Lifecyc
             return;
         }
 
-        getReactApplicationContext().addLifecycleEventListener(this);
         this.promise = promise;
 
         String phoneNumber = options.hasKey("phoneNumber") ? options.getString("phoneNumber") : "";
@@ -75,6 +74,8 @@ public class DigitsManager extends ReactContextBaseJavaModule implements Lifecyc
         }
 
         Digits.authenticate(digitsAuthConfigBuilder.build());
+
+        getReactApplicationContext().addLifecycleEventListener(this);
     }
 
     @ReactMethod
