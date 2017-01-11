@@ -51,10 +51,11 @@ public class DigitsManager extends ReactContextBaseJavaModule implements AuthCal
     @ReactMethod
     public void launchAuthentication(ReadableMap options, final Promise promise) {
         if (this.promise != null) {
-            promise.reject("Authentification process still in progress.");
-            return;
+            // Reject the old one
+            promise.reject("Authentication process still in progress.");
         }
 
+        // Set the new promise
         this.promise = promise;
 
         String phoneNumber = options.hasKey("phoneNumber") ? options.getString("phoneNumber") : "";
@@ -150,7 +151,7 @@ public class DigitsManager extends ReactContextBaseJavaModule implements AuthCal
         } else if (digitsException != null) {
             promise.reject(digitsException.toString());
         } else {
-            promise.reject("Authentification failed without exception.");
+            promise.reject("Authentication failed without exception.");
         }
 
         promise = null;
