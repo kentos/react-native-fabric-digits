@@ -12,7 +12,7 @@ class DigitsLogoutButton extends Component {
   getSessionDetails(callback) {
     NativeModules.DigitsManager.sessionDetails((error, sessionDetails) => {
       if (error) {
-        console.error(error);
+        console.log(error);
       } else {
         callback(sessionDetails);
       }

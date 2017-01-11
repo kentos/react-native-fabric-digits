@@ -12,7 +12,7 @@ class DigitsLoginButton extends Component {
   getSessionDetails(callback) {
     NativeModules.DigitsManager.sessionDetails((error, sessionDetails) => {
       if (error) {
-        console.error(error);
+        console.log(error);
       } else {
         callback(sessionDetails);
       }
@@ -25,7 +25,7 @@ class DigitsLoginButton extends Component {
       this.props.completion(null, responseData);
     }).catch((error) => {
       if(error && error.code != 1){
-        console.error("[Digits] Login Error", error);
+        console.log("[Digits] Login Error", error);
       }
       this.props.completion(error, null);
     });
