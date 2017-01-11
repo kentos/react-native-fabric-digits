@@ -74,8 +74,6 @@ public class DigitsManager extends ReactContextBaseJavaModule implements Lifecyc
         }
 
         Digits.authenticate(digitsAuthConfigBuilder.build());
-
-        getReactApplicationContext().addLifecycleEventListener(this);
     }
 
     @ReactMethod
@@ -133,24 +131,8 @@ public class DigitsManager extends ReactContextBaseJavaModule implements Lifecyc
         digitsException = exception;
     }
 
-    @Override
-    public void onHostResume() {
-        paused = false;
-        invokePromise();
-    }
-
-    @Override
-    public void onHostPause() {
-        paused = true;
-    }
-
-    @Override
-    public void onHostDestroy() {
-        paused = true;
-    }
-
     private void invokePromise() {
-        if (promise == null || paused) {
+        if (promise == null) {
             return;
         }
 
@@ -175,6 +157,5 @@ public class DigitsManager extends ReactContextBaseJavaModule implements Lifecyc
         promise = null;
         digitsSession = null;
         digitsException = null;
-        getReactApplicationContext().removeLifecycleEventListener(this);
     }
 }
