@@ -50,14 +50,7 @@ public class DigitsManager extends ReactContextBaseJavaModule implements AuthCal
 
     @ReactMethod
     public void launchAuthentication(ReadableMap options, final Promise promise) {
-        if (this.promise != null) {
-            // Reject the old one
-            promise.reject("Authentication process still in progress.");
-        }
-
-        // Set the new promise
         this.promise = promise;
-
         String phoneNumber = options.hasKey("phoneNumber") ? options.getString("phoneNumber") : "";
 
         // Check for Twitter config
